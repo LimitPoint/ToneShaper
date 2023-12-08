@@ -1,2 +1,3 @@
+![ToneShaper](https://www.limit-point.com/assets/images/ToneShaper.jpg)
 # ToneShaper
-Create sounds graphically
+## Audio samples are generated with numerical integration of user defined instantaneous frequency curves.  
