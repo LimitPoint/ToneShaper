@@ -18,7 +18,7 @@ The width of each view corresponds to a selected time range `[0, duration]`, whi
 
 ![drag_to_draw](http://www.limitpointstore.com/products/toneshaper/images/drag_to_draw.gif)
   
-Audio generation parameters are duration, frequency range, amplitude scaling, wave type, echo and fidelity, and are stored in documents. In-place document editing supports undo and redo. The samples library is a collection of built-in documents with parameter presets for starting points.
+Audio generation parameters are duration, frequency range, amplitude scaling, wave type, echo and fidelity, and are stored in documents. In-place [document](https://developer.apple.com/documentation/swiftui/building_a_document-based_app_with_swiftui) editing supports [undo and redo](https://developer.apple.com/documentation/swiftui/environmentvalues/undomanager). The samples library is a collection of built-in documents with parameter presets for starting points.
 
 ![samples](http://www.limitpointstore.com/products/toneshaper/images/library_button.gif)
 
