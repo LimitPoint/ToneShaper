@@ -2,7 +2,7 @@
 # ToneShaper
 ## Audio samples are generated with numerical integration of user defined instantaneous frequency curves.  
 
-The associated Xcode project implements an iOS and macOS SwiftUI app that enables users to draw instantaneous frequency values to define a function of time, `v(t)`. The function `v(t)` is numerically integrated with the Accelerate method [vDSP_vtrapzD] to generate a time varying phase argument `x(t)` of a periodic function `s(t)`. The composition `s(x(t))` is sampled at a sufficient rate to produce audio samples for playing or writing to a file. 
+The associated Xcode project implements an iOS and macOS SwiftUI app that enables users to draw [instantaneous frequency](https://www.limit-point.com/blog/2023/tone-shaper/#InstantaneousFrequency) values to define a function of time, `v(t)`. The function `v(t)` is [numerically integrated](https://www.limit-point.com/blog/2023/tone-shaper/#Numerical-Integration) with the Accelerate method [vDSP_vtrapzD] to generate a time varying phase argument `x(t)` of a periodic function `s(t)`. The composition `s(x(t))` is [sampled](https://www.limit-point.com/blog/2023/tone-shaper/#SamplingSignals) at a [sufficient rate](https://www.limit-point.com/blog/2023/tone-shaper/#Nyquist-Shannon-sampling-theorem) to produce audio samples for playing or writing to a file. 
 
 ### App Features
 
@@ -19,7 +19,9 @@ The width of each view corresponds to a selected time range `[0, duration]`, whi
 ![drag_to_draw](http://www.limitpointstore.com/products/toneshaper/images/drag_to_draw.gif)
   
 Audio generation parameters are duration, frequency range, amplitude scaling, wave type, echo and fidelity, and are stored in documents. In-place document editing supports undo and redo. The samples library is a collection of built-in documents with parameter presets for starting points.
-  
+
+![samples](http://www.limitpointstore.com/products/toneshaper/images/library_button.gif)
+
 Continuous audio play with [AVAudioEngine] provides feedback during experimentation with sound parameters before saving the sound as multiple cycles of the duration to a [WAV] file. 
 
 [vDSP_vtrapzD]: https://developer.apple.com/documentation/accelerate/1450678-vdsp_vtrapz
