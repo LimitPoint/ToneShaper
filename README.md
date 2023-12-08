@@ -4,6 +4,8 @@
 
 The associated Xcode project implements an iOS and macOS SwiftUI app that enables users to draw [instantaneous frequency] values to define a function of time, `v(t)`. The function `v(t)` is [numerically integrated] with the Accelerate method [vDSP_vtrapzD] to generate a time varying phase argument `x(t)` of a periodic function `s(t)`. The composition `s(x(t))` is [sampled] at a [sufficient rate] to produce audio samples for playing or writing to a file. 
 
+Learn more about ToneShaper from our [in-depth blog post](https://www.limit-point.com/blog/2023/tone-shaper).
+
 ### App Features
 
 The instantaneous frequency function `v(t)` is defined through two editing views. 
