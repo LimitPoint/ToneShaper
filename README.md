@@ -10,7 +10,7 @@ The instantaneous frequency function `v(t)` is defined through two editing views
 
 The width of each view corresponds to a selected time range `[0, duration]`, while the height corresponds to a selected frequency range `[minFrequency, maxFrequency]`.
 
-**Plot View:** Users can _tap_ within the view to select a series of points, subsequently subjected to linear interpolation by the [vDSP.linearInterpolate] function.
+**Plot View:** Users can _tap_ within the view to select a series of points, subsequently subjected to [linear interpolation] by the [vDSP.linearInterpolate] function.
 
 ![frequency_plot](http://www.limitpointstore.com/products/toneshaper/images/frequency_plot.png)
 
@@ -34,3 +34,4 @@ Continuous audio play with [AVAudioEngine] provides feedback during experimentat
 [sufficient rate]: https://www.limit-point.com/blog/2023/tone-shaper/#Nyquist-Shannon-sampling-theorem
 [document]: https://developer.apple.com/documentation/swiftui/building_a_document-based_app_with_swiftui
 [undo and redo]: https://developer.apple.com/documentation/swiftui/environmentvalues/undomanager
+[linear interpolation]: https://developer.apple.com/documentation/accelerate/using_linear_interpolation_to_construct_new_data_points
