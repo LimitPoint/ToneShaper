@@ -14,15 +14,15 @@ The width of each view corresponds to a selected time range `[0, duration]`, whi
 
 **Plot View:** Users can _tap_ within the view to select a series of points, subsequently subjected to [linear interpolation] by the [vDSP.linearInterpolate] function.
 
-![frequency_plot](http://www.limitpointstore.com/products/toneshaper/images/frequency_plot.png)
+![frequency_plot](https://www.limitpointstore.com/products/toneshaper/images/frequency_plot.png)
 
 **Draw View:** Alternatively _drag_ within this view to select a series of points for transition to the Plot View.
 
-![drag_to_draw](http://www.limitpointstore.com/products/toneshaper/images/drag_to_draw.gif)
+![drag_to_draw](https://www.limitpointstore.com/products/toneshaper/images/drag_to_draw.gif)
   
 Audio generation parameters are duration, frequency range, amplitude scaling, wave type, echo and fidelity, and are stored in documents. In-place [document] editing supports [undo and redo]. The samples library is a collection of built-in documents with parameter presets for starting points.
 
-![samples](http://www.limitpointstore.com/products/toneshaper/images/library_button.gif)
+![samples](https://www.limitpointstore.com/products/toneshaper/images/library_button.gif)
 
 Continuous audio play with [AVAudioEngine] provides feedback during experimentation with sound parameters before saving the sound as multiple cycles of the duration to a [WAV] file. 
 
