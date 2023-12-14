@@ -190,6 +190,7 @@ class GraphicalArrayModel: NSObject, ObservableObject, AVAudioPlayerDelegate, Au
     
     let toneWriter = ToneWriter()
     let piToneWriter = PiecewiseIntegratorToneWriter()
+    @Published var exportLinearPCM = true
     
     @Published var plotAudioObservable = PlotAudioObservable(frameSize: CGSize(width: 300, height: 15))
     
@@ -1501,6 +1502,8 @@ class GraphicalArrayModel: NSObject, ObservableObject, AVAudioPlayerDelegate, Au
                 completion(nil)
                 return
             }
+            
+            piToneWriter.exportLinearPCM = exportLinearPCM
             
             piToneWriter.scale = toneShaperScale(toneShaperScaleType: toneShaperScaleType, duration: duration) // scale is applied over the duration of the tone shape
             

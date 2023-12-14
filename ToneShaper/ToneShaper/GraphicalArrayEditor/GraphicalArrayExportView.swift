@@ -71,7 +71,7 @@ struct GraphicalArrayExportView: View {
                     .bold()
                 
                 Button(action: {
-                    viewModel.exportToneShapeAudio{
+                    viewModel.exportToneShapeAudio {
                         viewModel.alertInfo = GAAlertInfo(id: .exporterFailed, title: "Audio Not Exported", message: "Tone shape audio could not be exported.", action: {})
                     }
                 }, label: {
@@ -85,6 +85,21 @@ struct GraphicalArrayExportView: View {
                 Text("(Cycles up to \(Int(durationRange.upperBound)) s)")
                     .font(.caption2)
             }
+            
+            HStack {
+        
+                Text("Export Format")
+                    .bold()
+                
+                Picker("Export Format", selection: $viewModel.exportLinearPCM) {
+                    Text("Linear PCM").tag(true)
+                    Text("MPEG-4").tag(false)
+                }
+                .pickerStyle(SegmentedPickerStyle())
+            }
+            
+            Text("Linear PCM is uncompressed; MPEG-4 uses compressed audio encoding, trading higher quality for reduced file size.")
+                .font(.caption2)
             
             HStack {
                 

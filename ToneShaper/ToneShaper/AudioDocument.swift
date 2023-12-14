@@ -38,7 +38,7 @@ class AudioDocument : FileDocument {
             self.url = newURL
         }
         
-        filename = self.url?.deletingPathExtension().lastPathComponent
+        filename = self.url?.lastPathComponent
     }
     
     required init(configuration: ReadConfiguration) throws {

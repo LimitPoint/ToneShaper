@@ -227,7 +227,7 @@ struct GraphicalArrayControlView: View {
                 }
             }
             .buttonStyle(BorderlessButtonStyle())
-            .fileExporter(isPresented: $viewModel.showAudioExporter, document: viewModel.audioDocument, contentType: UTType.wav, defaultFilename: viewModel.audioDocument?.filename) { result in
+            .fileExporter(isPresented: $viewModel.showAudioExporter, document: viewModel.audioDocument, contentType: (viewModel.exportLinearPCM ? UTType.wav : UTType.mpeg4Audio), defaultFilename: viewModel.audioDocument?.filename) { result in
                 if case .success = result {
                     do {
                         let exportedURL: URL = try result.get()

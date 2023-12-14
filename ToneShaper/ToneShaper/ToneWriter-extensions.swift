@@ -224,21 +224,21 @@ extension ToneWriter {
         
         var actualDestinationURL = destinationURL
         
-        if actualDestinationURL.pathExtension != "wav" {
+        if actualDestinationURL.pathExtension != self.fileExtension {
             actualDestinationURL.deletePathExtension() // this can have unintended consequences, ex name = "x2.3"
-            actualDestinationURL.appendPathExtension("wav")
+            actualDestinationURL.appendPathExtension(self.fileExtension)
         }
         
         try? FileManager.default.removeItem(at: actualDestinationURL)
         
-        guard let assetWriter = try? AVAssetWriter(outputURL: actualDestinationURL, fileType: AVFileType.wav) else {
+        guard let assetWriter = try? AVAssetWriter(outputURL: actualDestinationURL, fileType: self.avFileType) else {
             completion(nil, "Can't create asset writer.")
             return
         }
         
         let sourceFormat = CMSampleBufferGetFormatDescription(sampleBuffer)
         
-        let audioCompressionSettings = [AVFormatIDKey: kAudioFormatLinearPCM] as [String : Any]
+        let audioCompressionSettings = [AVFormatIDKey: self.avFormatIDKey] as [String : Any]
         
         if assetWriter.canApply(outputSettings: audioCompressionSettings, forMediaType: AVMediaType.audio) == false {
             completion(nil, "Can't apply compression settings to asset writer.")

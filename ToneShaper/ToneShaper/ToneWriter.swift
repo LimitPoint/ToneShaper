@@ -34,12 +34,35 @@ class ToneWriter {
     
     var scale: ((Double)->Double)? // scale factor range in [0,1]
     
+    var exportLinearPCM = true {
+        didSet {
+            updateAudioExportProperties()
+        }
+    }
+    var avFileType = AVFileType.wav
+    var fileExtension = "wav"
+    var avFormatIDKey = kAudioFormatLinearPCM
+    
     deinit {
         print("ToneWriter deinit \(id)")
     }
     
     init() {
         print("ToneWriter init \(id)")
+        
+        updateAudioExportProperties()
+    }
+    
+    private func updateAudioExportProperties() {
+        if exportLinearPCM {
+            avFileType = AVFileType.wav
+            fileExtension = "wav"
+            avFormatIDKey = kAudioFormatLinearPCM
+        } else {
+            avFileType = AVFileType.m4a
+            fileExtension = "m4a"
+            avFormatIDKey = kAudioFormatMPEG4AAC
+        }
     }
     
     func audioSamplesForRange(component:Component, sampleRate:Int, sampleRange:ClosedRange<Int>) -> [Int16] {
@@ -154,14 +177,14 @@ class ToneWriter {
         
         var actualDestinationURL = destinationURL
         
-        if actualDestinationURL.pathExtension != "wav" {
+        if actualDestinationURL.pathExtension != self.fileExtension {
             actualDestinationURL.deletePathExtension() // this can have unintended consequences, ex name = "x2.3"
-            actualDestinationURL.appendPathExtension("wav")
+            actualDestinationURL.appendPathExtension(self.fileExtension)
         }
         
         try? FileManager.default.removeItem(at: actualDestinationURL)
         
-        guard let assetWriter = try? AVAssetWriter(outputURL: actualDestinationURL, fileType: AVFileType.wav) else {
+        guard let assetWriter = try? AVAssetWriter(outputURL: actualDestinationURL, fileType: self.avFileType) else {
             completion(nil, "Can't create asset writer.")
             return
         }
@@ -171,7 +194,7 @@ class ToneWriter {
             return
         }
         
-        let audioCompressionSettings = [AVFormatIDKey: kAudioFormatLinearPCM] as [String : Any]
+        let audioCompressionSettings = [AVFormatIDKey: self.avFormatIDKey] as [String : Any]
         
         if assetWriter.canApply(outputSettings: audioCompressionSettings, forMediaType: AVMediaType.audio) == false {
             completion(nil, "Can't apply compression settings to asset writer.")
